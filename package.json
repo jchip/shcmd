@@ -1,24 +1,13 @@
 {
-  "name": "shelljs",
-  "version": "0.7.8",
-  "description": "Portable Unix shell commands for Node.js",
-  "keywords": [
-    "shelljs",
-    "bash",
-    "unix",
-    "shell",
-    "makefile",
-    "make",
-    "jake",
-    "synchronous"
-  ],
+  "name": "shcmd",
+  "version": "0.7.9",
+  "description": "shcmd",
   "contributors": [
     "Nate Fischer <ntfschr@gmail.com> (https://github.com/nfischer)",
     "Brandon Freitag <freitagbr@gmail.com> (https://github.com/freitagbr)"
   ],
   "repository": {
-    "type": "git",
-    "url": "git://github.com/shelljs/shelljs.git"
+    "type": "git"
   },
   "license": "BSD-3-Clause",
   "homepage": "http://github.com/shelljs/shelljs",
@@ -45,13 +34,8 @@
     "release:minor": "shelljs-release minor",
     "release:patch": "shelljs-release patch"
   },
-  "bin": {
-    "shjs": "./bin/shjs"
-  },
   "dependencies": {
-    "glob": "^7.0.0",
-    "interpret": "^1.0.0",
-    "rechoir": "^0.6.2"
+    "glob": "^7.0.0"
   },
   "devDependencies": {
     "ava": "^0.16.0",
