@@ -236,9 +236,15 @@ function expand(list) {
     } else {
       var ret;
       try {
-        ret = glob.sync(listEl, config.globOptions);
+        // make a copy because glob mutates opt passed to it
+        var opts = Object.assign({}, config.globOptions);
+        if (listEl && listEl[listEl.length - 1] === '/') {
+          opts.mark = true;
+        }
+        ret = glob.sync(listEl, opts);
+
         // if nothing matched, interpret the string literally
-        ret = ret.length > 0 ? ret : [listEl];
+        ret = (ret.length > 0 ? ret : [listEl]).sort();
       } catch (e) {
         // if glob fails, interpret the string literally
         ret = [listEl];
@@ -372,7 +378,8 @@ function wrap(cmd, fn, options) {
         // Perform glob-expansion on all arguments after globStart, but preserve
         // the arguments before it (like regexes for sed and grep)
         if (!config.noglob && options.allowGlobbing === true) {
-          args = args.slice(0, options.globStart).concat(expand(args.slice(options.globStart)));
+          var shit = expand(args.slice(options.globStart));
+          args = args.slice(0, options.globStart).concat(shit);
         }
 
         try {

@@ -60,13 +60,13 @@ test('Sort a file by frequency of each line', t => {
 });
 
 test('Synchronous exec', t => {
-  const result = shell.cat('test/resources/grep/file').exec('shx grep "alpha*beta"');
+  const result = shell.cat('test/resources/grep/file').exec('node_modules/.bin/shx grep "alpha*beta"');
   t.falsy(shell.error());
   t.is(result.toString(), 'alphaaaaaaabeta\nalphbeta\n');
 });
 
 test.cb('Asynchronous exec', t => {
-  shell.cat('test/resources/grep/file').exec('shx grep "alpha*beta"', (code, stdout) => {
+  shell.cat('test/resources/grep/file').exec('node_modules/.bin/shx grep "alpha*beta"', (code, stdout) => {
     t.is(code, 0);
     t.is(stdout, 'alphaaaaaaabeta\nalphbeta\n');
     t.end();
