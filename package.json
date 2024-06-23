@@ -28,7 +28,6 @@
     "make.js",
     "plugin.js",
     "shell.js",
-    "bin",
     "src"
   ],
   "scripts": {
